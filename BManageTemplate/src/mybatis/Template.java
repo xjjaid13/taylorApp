@@ -34,7 +34,7 @@ public class Template {
 		String saveFile = projectPath + "/";
 		
 		/** 数据库名 */
-		String dbName = "datacBeta0.1";
+		String dbName = "BManageTemplate";
 		String dbUser = "root";
 		String dbPassword = "111111";
 		

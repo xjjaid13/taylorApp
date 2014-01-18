@@ -6,23 +6,7 @@
 
     <typeAliases>
 		
-        <typeAlias alias="Blog" type="com.entity.Blog" /> 
-		
-        <typeAlias alias="Note" type="com.entity.Note" /> 
-		
-        <typeAlias alias="NoteTime" type="com.entity.NoteTime" /> 
-		
-        <typeAlias alias="NoteType" type="com.entity.NoteType" /> 
-		
-        <typeAlias alias="Tag" type="com.entity.Tag" /> 
-		
-        <typeAlias alias="Type" type="com.entity.Type" /> 
-		
-        <typeAlias alias="User" type="com.entity.User" /> 
-		
-        <typeAlias alias="WebLink" type="com.entity.WebLink" /> 
-		
-        <typeAlias alias="WebLinktype" type="com.entity.WebLinktype" /> 
+        <typeAlias alias="Menu" type="com.entity.Menu" /> 
 		
     </typeAliases>    
     
