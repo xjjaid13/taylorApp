@@ -1,9 +1,11 @@
 package com.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class BaseEntity {
 
 	/** 开始页数 */
-	private int startPage = 0;
+	private int startPage = -1;
 	
 	/** 每页显示数量 */
 	private int page = 10;
@@ -14,6 +16,7 @@ public class BaseEntity {
 	/** 条件 */
 	private String condition;
 
+	@JSONField(serialize=false)
 	public int getStartPage() {
 		return startPage;
 	}
@@ -22,6 +25,7 @@ public class BaseEntity {
 		this.startPage = startPage;
 	}
 
+	@JSONField(serialize=false)
 	public int getPage() {
 		return page;
 	}
@@ -30,6 +34,7 @@ public class BaseEntity {
 		this.page = page;
 	}
 
+	@JSONField(serialize=false)
 	public String getIds() {
 		return ids;
 	}
@@ -38,6 +43,7 @@ public class BaseEntity {
 		this.ids = ids;
 	}
 
+	@JSONField(serialize=false)
     public String getCondition() {
         return condition;
     }

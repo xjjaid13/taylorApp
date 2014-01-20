@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="GBK"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.spring.dao.MenuMapperDao">
+<mapper namespace="com.dao.MenuMapperDao">
   <resultMap id="menu" type="Menu">
     <result property="menuId" column="menuId"/>
     <result property="menuName" column="menuName"/>
@@ -10,25 +10,26 @@
   </resultMap>
   <select id="select" resultType="java.util.Map" resultMap="menu">select * from menu where menuId = #{menuId}</select>
   <select id="selectList" resultType="java.util.List" resultMap="menu">select * from menu where 1 = 1 
-    <if test="{condition != null}">and ${condition}</if>  
-    <if test="menuId != null">and menuId = #{menuId}</if>
-    <if test="menuName != null">and menuName = '#{menuName}'</if>
-    <if test="parentId != null">and parentId = #{parentId}</if>
-    <if test="icon != null">and icon = '#{icon}'</if> limit #{startPage},#{page}
+    <if test="condition != null">and ${condition}</if>  
+    <if test="menuId != null">and menuId = #{menuId}</if>  
+    <if test="menuName != null">and menuName = '#{menuName}'</if>  
+    <if test="parentId != null">and parentId = #{parentId}</if>  
+    <if test="icon != null">and icon = '#{icon}'</if>  
+    <if test="startPage != -1">limit #{startPage},#{page}</if>
   </select>
   <select id="selectCount" resultType="java.lang.Integer">select count(menuId) from menu where 1 = 1 
-    <if test="{condition != null}">and ${condition}</if>  
-    <if test="menuId != null">and menuId = #{menuId}</if>
-    <if test="menuName != null">and menuName = '#{menuName}'</if>
-    <if test="parentId != null">and parentId = #{parentId}</if>
+    <if test="condition != null">and ${condition}</if>  
+    <if test="menuId != null">and menuId = #{menuId}</if>  
+    <if test="menuName != null">and menuName = '#{menuName}'</if>  
+    <if test="parentId != null">and parentId = #{parentId}</if>  
     <if test="icon != null">and icon = '#{icon}'</if> 
   </select>
-  <insert id="insert" parameterType="Menu">insert into menu ( menuId,menuName,parentId,icon ) values ( #{menuId},#{menuName},#{parentId},#{icon} )</insert>
+  <insert id="insert" parameterType="Menu">insert into menu (menuId,menuName,parentId,icon) values (#{menuId},#{menuName},#{parentId},#{icon})</insert>
   <update id="update" parameterType="Menu">update menu set 
     <if test="menuId != null">menuId = #{menuId},</if>
     <if test="menuName != null">menuName = #{menuName},</if>
     <if test="parentId != null">parentId = #{parentId},</if>
-    <if test="icon != null">icon = #{icon},</if> menuId = #{menuId} where menuId = #{menuId}
+    <if test="icon != null">icon = #{icon},</if>menuId = #{menuId} where menuId = #{menuId}
   </update>
   <delete id="deleteByIds" parameterType="Menu">delete from menu where menuId in (#{ids})</delete>
   <select id="maxId" resultType="java.util.Map" resultMap="menu">select max(menuId) from menu</select>

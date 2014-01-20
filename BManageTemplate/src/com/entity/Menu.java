@@ -1,5 +1,7 @@
 package com.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class Menu extends BaseEntity{
 	
 	private Integer menuId;
@@ -9,7 +11,6 @@ public class Menu extends BaseEntity{
 	private Integer parentId;
 	
 	private String icon;
-	
 	
 	public Integer getMenuId() {
 		return menuId;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.dao.{TableName}MapperDao">
+<mapper namespace="com.dao.{TableName}MapperDao">
 
 	<resultMap id="{tableName}" type="{TableName}">
 		{for}
@@ -14,15 +14,15 @@
 	
 	<select id="selectList"  resultType="java.util.List" resultMap="{tableName}">
 		select * from {tablename} where 1 = 1 
-			<if test="{condition != null}">and ${condition}</if> 
-	   {for}<if test="{columnname} != null"> and {columnname} = {#columnname}</if>{endfor}
-	        limit #{startPage},#{page}
+			<if test="condition != null"> and ${condition}</if> 
+	   {for}<if test="{columnname} != null"> and {columnname} = {#columnname} </if> {endfor}
+	        <if test="startPage != -1"> limit #{startPage},#{page}</if>
 	</select>
 	
 	<select id="selectCount"  resultType="java.lang.Integer" >
 		select count({tableName}Id) from {tablename} where 1 = 1 
-		<if test="{condition != null}">and ${condition}</if> 
-   {for}<if test="{columnname} != null"> and {columnname} = {#columnname}</if>{endfor} 
+		<if test="condition != null"> and ${condition}</if> 
+   {for}<if test="{columnname} != null"> and {columnname} = {#columnname}</if> {endfor} 
 	</select>
 	
 	<insert id="insert" parameterType="{TableName}">
@@ -35,7 +35,7 @@
 	
 	<update id="update" parameterType="{TableName}">
 		update {tablename} set 
-		{for}<if test="{columnname} != null">{columnname} = #{{columnName}},</if>{endfor}
+		{for}<if test="columnname != null">{columnname} = #{{columnName}},</if>{endfor}
 		{tableName}Id = #{{tableName}Id} where {tableName}Id = #{{tableName}Id}
 	</update>
 	

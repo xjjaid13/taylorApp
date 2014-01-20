@@ -541,5 +541,19 @@
 <script src="${base}/static/js/ace/js/ace.min.js"></script>
 <script src="${base}/static/js/ace/js/ace-elements.min.js"></script>
 <script src="${base}/static/js/ace/js/ace-extra.min.js"></script>
+<script>
+	$(function(){
+		$.ajax({
+			url : '${base}/main/returnMenu',
+			dataType : 'json',
+			success : function(ajaxData){
+				var menuList = ajaxData.list;
+				for(var i = 0; i < menuList.length; i++){
+					var menu = menuList[i];
+				}
+			}
+		});
+	});
+</script>
 </body>
 </html>

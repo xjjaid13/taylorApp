@@ -166,14 +166,14 @@ public class Template {
 			String selectResult = returnContent(selectString,result,field,tableName,type);
 			result.delete(0, result.length());
 			String selectListString = "select * from {tablename} where 1 = 1 "+
-				"<if test=\"{condition != null}\">and ${condition}</if> "+
-				"{for}<if test=\"{columnname} != null\"> and {columnname} = {#columnname}</if>{endfor}"+
-		        " limit #{startPage},#{page}";
+				"<if test=\"condition != null\"> and ${condition}</if> "+
+				"{for}<if test=\"{columnname} != null\"> and {columnname} = {#columnname}</if> {endfor}"+
+		        " <if test=\"startPage != -1\"> limit #{startPage},#{page}</if>";
 			String selectListResult = returnContent(selectListString,result,field,tableName,type);
 			result.delete(0, result.length());
 			String selectCountString = "select count({tableName}Id) from {tablename} where 1 = 1 "+
-					"<if test=\"{condition != null}\">and ${condition}</if> "+
-					"{for}<if test=\"{columnname} != null\"> and {columnname} = {#columnname}</if>{endfor} ";
+					"<if test=\"condition != null\"> and ${condition}</if> "+
+					"{for}<if test=\"{columnname} != null\"> and {columnname} = {#columnname}</if> {endfor} ";
 			String selectCountResult = returnContent(selectCountString,result,field,tableName,type);
 			result.delete(0, result.length());
 			String insertString = "insert into {tablename} ("+
