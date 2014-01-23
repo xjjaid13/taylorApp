@@ -1,7 +1,5 @@
 package com.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 public class Menu extends BaseEntity{
 	
 	private Integer menuId;
@@ -11,6 +9,9 @@ public class Menu extends BaseEntity{
 	private Integer parentId;
 	
 	private String icon;
+	
+	private String link;
+	
 	
 	public Integer getMenuId() {
 		return menuId;
@@ -28,6 +29,10 @@ public class Menu extends BaseEntity{
 		return icon;
 	}
 	
+	public String getLink() {
+		return link;
+	}
+	
 	
 	public void setMenuId(Integer menuId) {
 		this.menuId = menuId;
@@ -43,6 +48,10 @@ public class Menu extends BaseEntity{
 	
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+	
+	public void setLink(String link) {
+		this.link = link;
 	}
 	
 	public String toString(){
