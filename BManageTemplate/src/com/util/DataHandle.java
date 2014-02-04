@@ -18,6 +18,20 @@ import javax.servlet.http.HttpSession;
 public class DataHandle {
 	
 	/**
+	 * 判断字符串是否为空
+	 * true 为空;false 不为空;
+	 * @param object
+	 * @return
+	 */
+	public static boolean isEmpty(String object){
+		if(object == null || "".equals(object)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	/**
 	 * 获取字段长度、全角算一个长度，半角算半个长度
 	 * @param text 字段
 	 */

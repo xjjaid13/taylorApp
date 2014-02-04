@@ -56,14 +56,42 @@ public class MainAction {
 	
 	@RequestMapping("returnDataTables")
 	public void doReturnDataTables(HttpServletResponse response,HttpServletRequest request) throws IOException{
-		int iSortCol = DataHandle.returnValueInt(request, "iSortCol_0");
+        /** 开始页 */
+        int sPage = DataHandle.returnValueInt(request, "iDisplayStart");
+        /** 每页数量 */
+        int sRows = DataHandle.returnValueInt(request, "iDisplayLength");
+        /** 排序列位置 */
+        String iSortCol = DataHandle.returnValue(request, "iSortCol_0");
+        /** 排序方式 */
         String sOrderType = DataHandle.returnValue(request, "sSortDir_0");
-        String column = request.getParameter("sColumns");
-        String[] columnSpl = column.split(",");
-        String sortField = columnSpl[iSortCol];
+        /** 排序列 */
+        String sOrderCol = "";
+        /** 所有列code */
+        String sColumns = DataHandle.returnValue(request, "sColumns");
+        String[] cols = new String[] {};
+        if (sColumns != null) {
+            cols = sColumns.split(",");
+        }
+        if (!DataHandle.isEmpty(iSortCol)) {
+        	/** 获取当前排序列 */
+            sOrderCol = cols[Integer.valueOf(iSortCol)];
+        }
+        
+        String orderType = "";
+        String orderCol = "";
+        /** 设置排序参数 */
+        if (!DataHandle.isEmpty(sOrderCol)) {
+            orderCol = " order by " + sOrderCol;
+            if (!DataHandle.isEmpty(sOrderType)) {
+                orderType = sOrderType;
+            }
+            orderCol += " " + orderType;
+        }
         
 		Menu menu = new Menu();
-		menu.setCondition(" 1 = 1 order by " + sortField + " " + sOrderType);
+		menu.setStartPage(sPage);
+		menu.setPage(sRows);
+		menu.setCondition(" 1 = 1 " + orderCol);
 		List<Menu> menuList = menuMapperService.selectList(menu);
 		int count = menuMapperService.count(menu);
 		JSONObject json = new JSONObject();

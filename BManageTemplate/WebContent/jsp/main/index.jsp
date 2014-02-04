@@ -12,7 +12,8 @@
 <link href="${base}/static/js/ace/css/ace-rtl.min.css" rel="stylesheet" type="text/css"/>
 <link href="${base}/static/js/ace/css/ace-skins.min.css" rel="stylesheet" type="text/css"/>
 <link href="${base}/static/js/select2/css/select2.css" rel="stylesheet" type="text/css"/>
-
+<link href="${base}/static/js/datatables/css/datatables_bootstrap.css" rel="stylesheet" type="text/css"/>
+<link href="${base}/static/js/jqueryUi/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <style>
 	div.dataTables_length label {
     width: 460px;
@@ -39,8 +40,21 @@ div.dataTables_paginate {
 }
  
 table {
-    margin: 1em 0;
+    margin: 3px 0;
     clear: both;
+}
+#sample-table-2_length label{
+	padding-top: 5px;
+}
+#sample-table-2_wrapper .dt_foot{
+	border-radius : 0 0 5px 5px;
+}
+.ui-dialog *{
+	-moz-box-sizing : content-box
+}
+.row .tableGroup{
+	padding : 0;
+	float : left;
 }
 </style>
 </head>
@@ -58,7 +72,7 @@ table {
 
 			<div role="navigation" class="navbar-header pull-right">
 				<ul class="nav ace-nav">
-					<li class="grey">
+					<li class="grey hide">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="icon-tasks"></i>
 							<span class="badge badge-grey">4</span>
@@ -92,7 +106,7 @@ table {
 						</ul>
 					</li>
 
-					<li class="purple">
+					<li class="purple hide">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="icon-bell-alt"></i>
 							<span class="badge badge-important">8</span>
@@ -209,7 +223,7 @@ table {
 						<span class="menu-text"></span>
 					</a>
 			<div id="sidebar" class="sidebar">
-					<div id="sidebar-shortcuts" class="sidebar-shortcuts">
+					<div id="sidebar-shortcuts" class="sidebar-shortcuts hide">
 						<div id="sidebar-shortcuts-large" class="sidebar-shortcuts-large">
 							<button class="btn btn-success">
 								<i class="icon-signal"></i>
@@ -276,15 +290,112 @@ table {
 					</div><!-- #nav-search -->
 				</div>
 				<div class="page-content">
-					<table id="sample-table-2" class="table table-striped table-bordered bootstrap-datatable datatable">
-												
-					</table>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="widget-container-span ui-sortable">
+										<div class="widget-box collapsed">
+											<div class="widget-header">
+												<h5>Default Widget Box</h5>
+
+												<div class="widget-toolbar">
+													<a data-action="collapse" href="#">
+														<i class="icon-chevron-down"></i>
+													</a>
+												</div>
+											</div>
+
+											<div class="widget-body">
+												<div class="widget-main">
+													<p class="alert alert-info">
+														Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur. Nulla fringilla eleifend consectetur.
+													</p>
+													<p class="alert alert-success">
+														Raw denim you probably haven't heard of them jean shorts Austin.
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="sample-table-2_wrapper">
+										<button class="btn btn-primary" id="add">
+											<i class="icon-beaker align-top bigger-125"></i>
+											新增
+										</button>
+										<button class="btn">
+											<i class="icon-pencil align-top bigger-125"></i>
+											删除
+										</button>
+									</div>
+									<div class="table-responsive">
+										<table id="sample-table-2" class="table table-striped table-bordered bootstrap-datatable datatable">
+																
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 		</div>
 	</div>
-<script src="${base}/static/js/jquery-1.8.3.js"></script>
+	<div id="testDiv" class="hide">
+    	<form role="form">
+		    <div class="form-group">
+		        <label for="exampleInputEmail1">Email address</label>
+		        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+		    </div>
+		    <div class="form-group">
+		    	<label for="exampleInputPassword1">Password</label>
+		    	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+		    </div>
+		    <div class="form-group">
+		    	<label for="exampleInputFile">File input</label>
+		    	<input type="file" id="exampleInputFile">
+		    	<p class="help-block">Example block-level help text here.</p>
+		    </div>
+		    <div class="form-group">
+		        <label for="exampleInputEmail1">Email address</label>
+		        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+		    </div>
+		    <div class="form-group">
+		    	<label for="exampleInputPassword1">Password</label>
+		    	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+		    </div>
+		    <div class="form-group">
+		    	<label for="exampleInputFile">File input</label>
+		    	<input type="file" id="exampleInputFile">
+		    	<p class="help-block">Example block-level help text here.</p>
+		    </div>
+		    <div class="form-group">
+		        <label for="exampleInputEmail1">Email address</label>
+		        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+		    </div>
+		    <div class="form-group">
+		    	<label for="exampleInputPassword1">Password</label>
+		    	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+		    </div>
+		    <div class="form-group">
+		    	<label for="exampleInputFile">File input</label>
+		    	<input type="file" id="exampleInputFile">
+		    	<p class="help-block">Example block-level help text here.</p>
+		    </div>
+		    <div class="checkbox">
+			    <label>
+			        <input type="checkbox"> Check me out
+			    </label>
+		    </div>
+		</form>
+		
+
+    </div>
+<script src="${base}/static/js/jquery.js"></script>
 <script src="${base}/static/js/bootstrap/js/bootstrap.js"></script>
+<script src="${base}/static/js/jqueryUi/jquery.ui.min.js"></script>
+<script src="${base}/static/js/jqueryUi/jquery.ui.dialog.js"></script>
 <script src="${base}/static/js/ace/js/ace.min.js"></script>
 <script src="${base}/static/js/ace/js/ace-elements.min.js"></script>
 <script src="${base}/static/js/ace/js/ace-extra.min.js"></script>
@@ -314,8 +425,8 @@ table {
 			}
 		});
 		
-		$('#sample-table-2').dataTable( {
-		    "sDom": "R<'clear'>rt<'row dt-footer'<'col-md-4 page_info pull-left'l><'col-md-3'i><'col-md-5'p>>",
+		$('#sample-table-2').dataTable({
+		    "sDom": "rt<'row dt_foot'<'col-md-4'l><'col-md-3'i><'col-md-5'p>>",
 			"bServerSide": true,
             "sAjaxSource": "${base}/main/returnDataTables",
             "aoColumnDefs": [ 
@@ -331,35 +442,52 @@ table {
                     $("select").select2();
                 },
             "aoColumns" : [ {
-                    "sTitle" : "<s:text name='common.table.NO'/>",
-                    "sName" : "menuId",
-                    "mData" : "menuId",
-                    "sClass":"table-number center"
-                }, {
-                    "sTitle" : "<input type='checkbox'/>",
-                    "mData" : function(data,type,row){
-                    	return "<input type='checkbox' name='ids' value='"+data.menuID+"'/>";
-                    },
-                    "sClass":"table-number center"
-                },{
-                    "sTitle" : "菜单名",
-                    "sName" : "menuName",
-                    "mData" : function(data,type,row){
-                        return data.menuName;
-                    }
-                }, {
-                    "sTitle" : "icon",
-                    "sName" : "icon",
-                    "mData" : function(data,type,row){
-                        return data.icon;
-                    }
-                }, {
-                    "sTitle" : "<s:text name='common.table.operator'/>",
-                    "mData" : function(data,type,row){
-                    	return "<a href='#' class='blue'><i class='icon-zoom-in bigger-130'></i></a>";
-                    }
-                }]
+                "sTitle" : "<s:text name='common.table.NO'/>",
+                "sName" : "menuId",
+                "mData" : "menuId",
+                "sClass":"table-number center"
+            }, {
+                "sTitle" : "<input type='checkbox'/>",
+                "mData" : function(data,type,row){
+                	return "<input type='checkbox' name='ids' value='"+data.menuID+"'/>";
+                },
+                "sClass":"table-number center"
+            },{
+                "sTitle" : "菜单名",
+                "sName" : "menuName",
+                "mData" : function(data,type,row){
+                    return data.menuName;
+                }
+            }, {
+                "sTitle" : "icon",
+                "sName" : "icon",
+                "mData" : function(data,type,row){
+                    return data.icon;
+                }
+            }, {
+                "sTitle" : "<s:text name='common.table.operator'/>",
+                "mData" : function(data,type,row){
+                	return "<a href='javascript:void()' class='blue'><i class='icon-zoom-in bigger-130'></i></a>";
+                }
+            }]
 		});
+		$("#add").click(function(){
+			$("#testDiv").dialog({
+	            title:'新增',
+	            autoOpen: true,
+	            width: 628,
+	            height : 500,
+	            buttons: {
+	                "保存": function () {
+	                    alert('aaa');
+	                },
+	                "取消": function () {
+	                    $(this).dialog("destroy");
+	                }
+	            }
+	        });
+		});
+		
 	});
 </script>
 </body>
