@@ -43,7 +43,7 @@
 		delete from {tablename} where {tableName}Id in (#{ids})
 	</delete>
 
-	<select id="maxId" resultType="java.util.Map" resultMap="{tableName}">
+	<select id="maxId" resultType="java.lang.Integer">
 		select max({tableName}Id) from {tablename}
 	</select>
 	
